@@ -55,7 +55,8 @@ class ArbolGeneral{
       * implementa como un conjunto de nodos enlazados según la relación 
       * padre-hijo más a la izquierda-hermano derecha.
       */
-    struct nodo {
+    struct nodo 
+    {
       /**
         *@brief Elemento almacenado
         *
