@@ -154,8 +154,17 @@ void ArbolGeneral<Tbase>::asignar_subarbol(const ArbolGeneral<Tbase>& orig, cons
 }
 
 template <class Tbase>
-void ArbolGeneral<Tbase>::podar_hijomasizquierda(Nodo n, ArbolGeneral<Tbase>& dest){
-	//VACIO
+void ArbolGeneral<Tbase>::podar_hijomasizquierda(Nodo n, ArbolGeneral<Tbase>& dest)		//Modificada por Andrés 
+{
+	Nodo *recorredor;
+	recorredor = laraiz;
+
+	while(recorredor->izqda != n)
+		recorredor = recorredor->izqda;
+
+	dest =  recorredor -> izqda;
+	destruir(recorredor->izqda);
+
 }
 
 template <class Tbase>
@@ -222,4 +231,6 @@ template<class T>
 std::ostream& operator<< (std::ostream& out, const ArbolGeneral<T>& v){
 	//VACIO
 }
+
+
 /*END PUBLIC*/
