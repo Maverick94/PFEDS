@@ -75,12 +75,139 @@ bool ArbolGeneral<Tbase>::soniguales(const nodo * n1, const nodo * n2) const
 }
 
 
-
-//Métodos públicos
+/*PUBLIC*/
+template <class Tbase>
+ArbolGeneral<Tbase>::ArbolGeneral(){/*El constructor por defecto no hace nada*/}
 
 template <class Tbase>
-
-void ArboGeneral<Tbase>::podar_hijomasizquierda(Nodo n, ArbolGeneral<Tbase>& dest)
-{
-	
+ArbolGeneral<Tbase>::ArbolGeneral(const Tbase& e){
+	laraiz=new nodo;
+	laraiz->etiqueta=e;
+	laraiz->padre=laraiz->izqda=laraiz->drcha=0;
 }
+
+template <class Tbase>
+ArbolGeneral<Tbase>::ArbolGeneral (const ArbolGeneral<Tbase>& v){
+	copiar(v);
+}
+
+template <class Tbase>
+ArbolGeneral<Tbase>::~ArbolGeneral(){
+	destruir(laraiz);
+}
+
+template <class Tbase>
+ArbolGeneral<Tbase>& ArbolGeneral<Tbase>::operator = (const ArbolGeneral<Tbase> &v){
+	//VACIO
+}
+
+template <class Tbase>
+void ArbolGeneral<Tbase>::AsignaRaiz(const Tbase& e){
+	laraiz->etiqueta=e;
+}
+
+template <class Tbase>
+typename ArbolGeneral<Tbase>::Nodo ArbolGeneral<Tbase>::raiz() const{
+	return laraiz;
+}
+
+template <class Tbase>
+typename ArbolGeneral<Tbase>::Nodo ArbolGeneral<Tbase>::hijomasizquierda(const Nodo n) const{
+	return n->izqda;
+}
+
+template <class Tbase>
+typename ArbolGeneral<Tbase>::Nodo ArbolGeneral<Tbase>::hermanoderecha(const Nodo n) const{
+	return n->drcha;
+}
+
+template <class Tbase>
+typename ArbolGeneral<Tbase>::Nodo ArbolGeneral<Tbase>::padre(const Nodo n) const{
+	return n->padre;
+}
+
+template <class Tbase>
+Tbase& ArbolGeneral<Tbase>::etiqueta(const Nodo n){
+	return n->etiqueta;
+}
+
+template <class Tbase>
+const Tbase& ArbolGeneral<Tbase>::etiqueta(const Nodo n) const{
+	return n->etiqueta;
+}
+
+template <class Tbase>
+void ArbolGeneral<Tbase>::asignar_subarbol(const ArbolGeneral<Tbase>& orig, const Nodo nod){
+	//VACIO
+}
+
+template <class Tbase>
+void ArbolGeneral<Tbase>::podar_hijomasizquierda(Nodo n, ArbolGeneral<Tbase>& dest){
+	//VACIO
+}
+
+template <class Tbase>
+void ArbolGeneral<Tbase>::podar_hermanoderecha(Nodo n, ArbolGeneral<Tbase>& dest){
+	//VACIO
+}
+
+template <class Tbase>
+void ArbolGeneral<Tbase>::insertar_hijomasizquierda(Nodo n, ArbolGeneral<Tbase>& rama){
+	//VACIO
+}
+
+template <class Tbase>
+void ArbolGeneral<Tbase>::insertar_hermanoderecha(Nodo n, ArbolGeneral<Tbase>& rama){
+	//VACIO
+}
+
+template <class Tbase>
+void ArbolGeneral<Tbase>::clear(){
+	//VACIO
+}
+
+template <class Tbase>
+int ArbolGeneral<Tbase>::size() const{
+	if(laraiz==0)
+		return 0;
+	else{
+		nodo *auxpadre=laraiz;
+		nodo *aux;
+		int cont=1;
+		while(auxpadre!=0)		
+			aux=auxpadre->izqda;			
+			while(aux!=0){
+				cont++;
+				aux=aux->izda;			
+			}
+			auxpadre=auxpadre->izqda->drcha;			
+		}
+		return cont;
+	}
+}
+
+template <class Tbase>
+bool ArbolGeneral<Tbase>::empty() const{
+	return laraiz==0;
+}
+
+template <class Tbase>
+bool ArbolGeneral<Tbase>::operator == (const ArbolGeneral<Tbase>& v) const{
+	return soniguales(laraiz,v.laraiz);
+}
+
+template <class Tbase>
+bool ArbolGeneral<Tbase>::operator != (const ArbolGeneral<Tbase>& v) const{
+	return !soniguales(laraiz,v.laraiz);
+}
+
+template<class T> 
+std::istream& operator>>(std::istream& in, ArbolGeneral<T>& v){
+	//VACIO
+}
+
+template<class T>
+std::ostream& operator<< (std::ostream& out, const ArbolGeneral<T>& v){
+	//VACIO
+}
+/*END PUBLIC*/
