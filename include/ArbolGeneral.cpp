@@ -99,7 +99,7 @@ ArbolGeneral<Tbase>::ArbolGeneral(const Tbase& e){
 }
 
 template <class Tbase>
-ArbolGeneral<Tbase>::ArbolGeneral (const ArbolGeneral<Tbase>& v){
+ArbolGeneral<Tbase>::ArbolGeneral (const ArbolGeneral<Tbase>& v){ 
 	copiar(v);
 }
 
