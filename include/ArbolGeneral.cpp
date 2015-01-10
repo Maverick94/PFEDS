@@ -73,3 +73,14 @@ bool ArbolGeneral<Tbase>::soniguales(const nodo * n1, const nodo * n2) const
 
 	return iguales;
 }
+
+
+
+//Métodos públicos
+
+template <class Tbase>
+
+void ArboGeneral<Tbase>::podar_hijomasizquierda(Nodo n, ArbolGeneral<Tbase>& dest)
+{
+	
+}
