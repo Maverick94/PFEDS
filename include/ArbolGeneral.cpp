@@ -116,7 +116,7 @@ ArbolGeneral<Tbase>& ArbolGeneral<Tbase>::operator = (const ArbolGeneral<Tbase> 
 template <class Tbase>
 void ArbolGeneral<Tbase>::AsignaRaiz(const Tbase& e){
 	laraiz->etiqueta=e;
-}
+} 
 
 template <class Tbase>
 typename ArbolGeneral<Tbase>::Nodo ArbolGeneral<Tbase>::raiz() const{
