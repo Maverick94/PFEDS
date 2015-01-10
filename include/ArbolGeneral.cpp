@@ -75,6 +75,18 @@ bool ArbolGeneral<Tbase>::soniguales(const nodo * n1, const nodo * n2) const
 }
 
 
+template <class Tbase>
+void ArbolGeneral<Tbase>::escribe_arbol(std::ostream& out, nodo * nod) const{
+	//VACIO
+}
+
+template <class Tbase>
+void ArbolGeneral<Tbase>::lee_arbol(std::istream& in, nodo *& nod){
+	//VACIO
+}
+
+/*FIN PRIVATE*/
+
 /*PUBLIC*/
 template <class Tbase>
 ArbolGeneral<Tbase>::ArbolGeneral(){/*El constructor por defecto no hace nada*/}
