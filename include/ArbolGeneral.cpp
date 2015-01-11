@@ -109,8 +109,15 @@ ArbolGeneral<Tbase>::~ArbolGeneral(){
 }
 
 template <class Tbase>
-ArbolGeneral<Tbase>& ArbolGeneral<Tbase>::operator = (const ArbolGeneral<Tbase> &v){
-	//VACIO
+ArbolGeneral<Tbase>& ArbolGeneral<Tbase>::operator = (const ArbolGeneral<Tbase> &v)
+{
+	if(this != &orig)
+	{
+		destruir(laraiz);
+		copiar(laraiz,v.raiz());
+	}
+	
+	return *this;
 }
 
 template <class Tbase>
@@ -156,15 +163,27 @@ void ArbolGeneral<Tbase>::asignar_subarbol(const ArbolGeneral<Tbase>& orig, cons
 template <class Tbase>
 void ArbolGeneral<Tbase>::podar_hijomasizquierda(Nodo n, ArbolGeneral<Tbase>& dest)		//Modificada por Andrés 
 {
-	Nodo *recorredor;
-	recorredor = laraiz;
+	asset(n!=0); //El nodo tiene que apuntar apuntar a algo.
+	destruir(dest.laraiz); 	//Nos aseguramos de que en el arbol donde vamos a meter la rama esté vacio.
+	dest.laraiz = n->izqda; //hacemos que la nueva raiz sea el hijo de la izquierda de n.
 
-	while(recorredor->izqda != n)
-		recorredor = recorredor->izqda;
+	if(dest.laraiz != 0) //Si la raiz no es nula
+	{
+		
+		if(n->izqda->drcha != 0) 	//Con esto hacemos que si exitiera un hermano a la derecha, pasa a ser el nuevo hijo a la izquierda 
+		{
+			n->izqda = dest.laraiz->drcha;
+			dest.laraiz->drcha = 0;
+		}
+		else	//Si no existe un hermano a la derecha, simplemente desvinculamos el hijo de la izquierda.
+			n->izqda = 0;
 
-	dest =  recorredor -> izqda;
-	destruir(recorredor->izqda);
+		dest.laraiz->padre = 0;	//Con esto, podamos totalmente la raiz. De total forma que ahora pasa a ser el padre.  
+		
+		// Con esto, estamos desvinculando la rama del arbol orginal y guardandola en el origen
+	}
 
+	
 }
 
 template <class Tbase>
