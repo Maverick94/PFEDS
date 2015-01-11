@@ -187,8 +187,22 @@ void ArbolGeneral<Tbase>::podar_hijomasizquierda(Nodo n, ArbolGeneral<Tbase>& de
 }
 
 template <class Tbase>
-void ArbolGeneral<Tbase>::podar_hermanoderecha(Nodo n, ArbolGeneral<Tbase>& dest){
-	//VACIO
+void ArbolGeneral<Tbase>::podar_hermanoderecha(Nodo n, ArbolGeneral<Tbase>& dest)
+{
+	assert(n!=0);
+	destruir(dest.laraiz);
+	dest.laraiz = n -> drcha; //hacemos que la nueva raiz sea el hermano de la derecha de n.
+
+	if(dest.raiz->drcha != 0)	//si este tiene otro hermano a la derecha, el hermano de la izquierda apuntara al hermano de la derecha
+	{
+		n->drcha = dest.raiz->drcha;
+		dest.raiz->drcha = 0;
+	}
+	else	//si no tiene hermano a la derecha, el hermano de la izquierda simplemente dejara de apuntarle.
+		n->drcha = 0;
+
+	dest.raiz->padre = 0;
+
 }
 
 template <class Tbase>
