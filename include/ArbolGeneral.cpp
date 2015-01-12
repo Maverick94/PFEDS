@@ -39,7 +39,7 @@ void ArbolGeneral<Tbase>::copiar(nodo *& dest, nodo * orig)
 	}
 }
 
-template <class ArbolGeneral>
+template <class Tbase>
 
 int ArbolGeneral<Tbase>::contar(const nodo * n) const
 {
@@ -52,7 +52,7 @@ int ArbolGeneral<Tbase>::contar(const nodo * n) const
 	return cuenta_nodos;
 }
 
-template <class ArbolGeneral>
+template <class Tbase>
 
 bool ArbolGeneral<Tbase>::soniguales(const nodo * n1, const nodo * n2) const
 {
@@ -83,8 +83,8 @@ void ArbolGeneral<Tbase>::escribe_arbol(std::ostream& out, nodo * nod) const 	//
 	else
 	{
 		out<<"n " << nod->etiqueta<<" ";
-		escribe_arbol(out,n->izqda);
-		escribe_arbol(out,n->drcha);
+		escribe_arbol(out,nod->izqda);
+		escribe_arbol(out,nod->drcha);
 	}
 
 	/*Creo que está bien pero no estoy muy seguro*/
@@ -121,7 +121,7 @@ ArbolGeneral<Tbase>::~ArbolGeneral(){
 template <class Tbase>
 ArbolGeneral<Tbase>& ArbolGeneral<Tbase>::operator = (const ArbolGeneral<Tbase> &v)	//Codificado por Andrés
 {
-	if(this != &orig)
+	if(this != &v)
 	{
 		destruir(laraiz);
 		copiar(laraiz,v.raiz());
@@ -173,7 +173,7 @@ void ArbolGeneral<Tbase>::asignar_subarbol(const ArbolGeneral<Tbase>& orig, cons
 template <class Tbase>
 void ArbolGeneral<Tbase>::podar_hijomasizquierda(Nodo n, ArbolGeneral<Tbase>& dest)		//Codificado por Andrés
 {
-	asset(n!=0); //El nodo tiene que apuntar apuntar a algo.
+	assert(n!=0); //El nodo tiene que apuntar apuntar a algo.
 	destruir(dest.laraiz); 	//Nos aseguramos de que en el arbol donde vamos a meter la rama esté vacio.
 	dest.laraiz = n->izqda; //hacemos que la nueva raiz sea el hijo de la izquierda de n.
 
@@ -235,7 +235,7 @@ void ArbolGeneral<Tbase>::insertar_hermanoderecha(Nodo n, ArbolGeneral<Tbase>& r
 	assert(n!=0);
 
 	if(n->drcha != 0)	//Si el nodo que seleccionamos tiene un hermano a la derecha, cuando insertemos la nueva rama, esta tiene que ser hermano a la derecha 
-		rama.laraiz->drcha = n->drcha
+		rama.laraiz->drcha = n->drcha;
 
 	rama.laraiz->padre = n->padre; //Como deja de ser raiz, tiene que referenciar a un nuevo padre. En este caso n->padre.
 	n->drcha = rama.laraiz;	//la rama pasa a ser hermano a la derecha de n.
@@ -251,12 +251,14 @@ void ArbolGeneral<Tbase>::clear()	//Codificado por Andrés
 
 template <class Tbase>
 int ArbolGeneral<Tbase>::size() const{
+	
+	int cont=1;
+
 	if(laraiz==0)
 		return 0;
 	else{
 		nodo *auxpadre=laraiz;
 		nodo *aux;
-		int cont=1;
 		while(auxpadre!=0)		
 			aux=auxpadre->izqda;			
 			while(aux!=0){
@@ -266,7 +268,6 @@ int ArbolGeneral<Tbase>::size() const{
 			auxpadre=auxpadre->izqda->drcha;			
 		}
 		return cont;
-	}
 }
 
 template <class Tbase>
@@ -290,18 +291,13 @@ std::istream& operator>>(std::istream& in, ArbolGeneral<T>& v){
 }
 
 template<class T>
-std::ostream& operator<< (std::ostream& out, const ArbolGeneral<T>& v){
-	//VACIO
+std::ostream& operator<< (std::ostream& out, const ArbolGeneral<T>& v)
+{
+	escribe_arbol(out,v->laraiz);
+ 	return out;
 }
 
 
 /*END PUBLIC*/
 
 /*FUERA DE LA CLASE*/
-
- template<class T>
- ostream& operator<< (ostream& out, const ArbolGeneral<T>& v)	//Si escribir arbol está bien, entoces esto está bien
- {
- 	 escribe_arbol(out,v->laraiz);
- 	 return out;
- }

@@ -573,14 +573,14 @@ class ArbolGeneral{
      */
     
      iter_preorden begin();
-     const_iter_preorden begin()const 	
+     const_iter_preorden begin()const;
      
      
     /**
      * @brief Inicializa un iterador al nodo nulo con la raiz del arbol. Nivel -1
      */
      iter_preorden end();
-     const_iter_preorden end()const 
+     const_iter_preorden end()const; 
     
 };
 
