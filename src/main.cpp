@@ -15,7 +15,7 @@ int main ()
 	cout << "Inserta otro para añadirlo al nodo mas izquierda" << endl;
 	cin >> othertree;
 
-	tree.insertar_hijomasizquierda(tree.hijomasizquierda(tree.raiz()), othertree);
+	tree.insertar_hijomasizquierda(tree.raiz(), othertree);
 
 	cout << tree << endl;
 
