@@ -82,10 +82,10 @@ template <class Tbase>
 void ArbolGeneral<Tbase>::escribe_arbol(std::ostream& out, nodo * nod) const 	//Codificado por Andrés
 {
 	if(nod == 0)
-		out << 'x';
+		out << "x ";
 	else
 	{
-		out<<"n " << nod->etiqueta<<" ";
+		out<<"n" << nod->etiqueta<<" ";
 		escribe_arbol(out,nod->izqda);
 		escribe_arbol(out,nod->drcha);
 	}
@@ -270,7 +270,7 @@ void ArbolGeneral<Tbase>::insertar_hijomasizquierda(Nodo n, ArbolGeneral<Tbase>&
 	n->izqda=aux.laraiz;	//Hijo a la izquierda de n pasa a ser la la raiz de la rama que insertamos.
 	aux.laraiz->padre=n;	//Como deja de ser raiz, tiene que refenciar a un nuevo padre. En este caso n.
 
-	destruir(rama.laraiz);	//Destruimos la rama porque ya está insertada.
+	//destruir(rama.laraiz);	//Destruimos la rama porque ya está insertada.
 }
 
 template <class Tbase>
