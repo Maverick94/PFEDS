@@ -10,14 +10,14 @@ int main ()
 	cin >> tree;
 
 	cout << "Tu Arbol deberia ser: " << endl;
-	cout << tree << endl;
+	cout << tree;
 
 	cout << "Inserta otro para añadirlo al nodo mas izquierda" << endl;
 	cin >> othertree;
 
 	tree.insertar_hijomasizquierda(tree.raiz(), othertree);
 
-	cout << tree << endl;
+	cout << tree;
 
 	cout << "\nHa compilado" << endl;
 

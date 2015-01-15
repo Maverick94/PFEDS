@@ -27,10 +27,7 @@ void ArbolGeneral<Tbase>::copiar(nodo *& dest, nodo * orig)
 	}
 	else
 	{
-		dest->izqda = orig->izqda;
-		dest->padre = orig->padre;
-		dest->drcha = orig->drcha;
-		dest->etiqueta = orig->etiqueta;
+		dest = new nodo (orig->etiqueta);
 		copiar(orig->izqda, dest->izqda);
 		copiar(orig->drcha, dest->drcha);
 
@@ -153,7 +150,7 @@ ArbolGeneral<Tbase>::ArbolGeneral(const Tbase& e){
 
 template <class Tbase>
 ArbolGeneral<Tbase>::ArbolGeneral (const ArbolGeneral<Tbase>& v){ 
-	copiar(laraiz,v.raiz());
+	copiar(v);
 }
 
 template <class Tbase>
@@ -263,12 +260,12 @@ template <class Tbase>
 void ArbolGeneral<Tbase>::insertar_hijomasizquierda(Nodo n, ArbolGeneral<Tbase>& rama)   	//Codificado por Andrés
 {
 	assert(n!=0);
-	ArbolGeneral<Tbase> aux=rama;
+
 	if(n->izqda != 0)	//Si el nodo tiene hijo a la izquierda, este pasa a ser hermano a la derecha de la rama que insertamos
-		aux.laraiz->drcha=n->izqda;
+		rama.laraiz->drcha=n->izqda;
 	
-	n->izqda=aux.laraiz;	//Hijo a la izquierda de n pasa a ser la la raiz de la rama que insertamos.
-	aux.laraiz->padre=n;	//Como deja de ser raiz, tiene que refenciar a un nuevo padre. En este caso n.
+	n->izqda=rama.laraiz;	//Hijo a la izquierda de n pasa a ser la la raiz de la rama que insertamos.
+	rama.laraiz->padre=n;	//Como deja de ser raiz, tiene que refenciar a un nuevo padre. En este caso n.
 
 	//destruir(rama.laraiz);	//Destruimos la rama porque ya está insertada.
 }

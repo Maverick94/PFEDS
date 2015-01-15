@@ -3,7 +3,7 @@
 
 #include <cassert>
 #include <iostream>
-using namespace std;
+using namespace std; 
 
 /**
    @brief T.D.A. ArbolGeneral
