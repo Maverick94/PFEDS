@@ -79,7 +79,7 @@ template <class Tbase>
 void ArbolGeneral<Tbase>::escribe_arbol(std::ostream& out, nodo * nod) const 	//Codificado por Andrés
 {
 	if(nod == 0)
-		out << "x ";
+		out << 'x';
 	else
 	{
 		out<<"n " << nod->etiqueta<<" ";
@@ -88,18 +88,58 @@ void ArbolGeneral<Tbase>::escribe_arbol(std::ostream& out, nodo * nod) const 	//
 	}
 
 	/*Creo que está bien pero no estoy muy seguro*/
+	/*En el bintree de Rosa hace algo parecido... Pero mete las letras con una variable char y nosotros lo estamos
+	haciendo con las dobles comillas que se interpretan como un string */
 }
 
 template <class Tbase>
-void ArbolGeneral<Tbase>::lee_arbol(std::istream& in, nodo *& nod){
-	//VACIO
+void ArbolGeneral<Tbase>::lee_arbol(std::istream& in, nodo *& nod)
+{
+	destruir(nod);
+
+	char c;
+	Tbase etq;
+
+	if(in)
+	{
+		//cout << "Comprobamos si es nodo nulo o lleno" << endl;
+		in >> c;
+		//cout << "1º Lee el siguiente caracter '" << c << "'" << endl;
+		if(c=='x')
+		{
+			nod=0;
+		}
+		else
+		{
+			nod = new nodo;
+			in  >> etq;
+			//cout << "Leido etiqueta '"<< etq<<"'" << endl;
+			nod -> etiqueta = etq;
+			nod->izqda = 0;
+			nod->drcha = 0;
+
+			if(c != 'x')
+			{
+				lee_arbol(in,nod->izqda);
+				if(nod->izqda)
+					nod->izqda->padre = nod;
+			}
+
+			if(c != 'x')
+			{
+				lee_arbol(in,nod->drcha);
+				if(nod->drcha)
+					nod->drcha->padre = nod;
+			}
+		}
+	}
 }
 
 /*FIN PRIVATE*/
 
 /*PUBLIC*/
 template <class Tbase>
-ArbolGeneral<Tbase>::ArbolGeneral(){/*El constructor por defecto no hace nada*/}
+ArbolGeneral<Tbase>::ArbolGeneral() : laraiz(0){/*El constructor por defecto no hace nada*/}
 
 template <class Tbase>
 ArbolGeneral<Tbase>::ArbolGeneral(const Tbase& e){
@@ -114,7 +154,8 @@ ArbolGeneral<Tbase>::ArbolGeneral (const ArbolGeneral<Tbase>& v){
 }
 
 template <class Tbase>
-ArbolGeneral<Tbase>::~ArbolGeneral(){
+ArbolGeneral<Tbase>::~ArbolGeneral()
+{
 	destruir(laraiz);
 }
 
@@ -286,14 +327,16 @@ bool ArbolGeneral<Tbase>::operator != (const ArbolGeneral<Tbase>& v) const{
 }
 
 template<class T> 
-std::istream& operator>>(std::istream& in, ArbolGeneral<T>& v){
-	//VACIO
+std::istream& operator>>(std::istream& in, ArbolGeneral<T>& v)
+{
+	v.lee_arbol(in,v.laraiz);
+	return in;
 }
 
 template<class T>
 std::ostream& operator<< (std::ostream& out, const ArbolGeneral<T>& v)
 {
-	escribe_arbol(out,v->laraiz);
+	v.escribe_arbol(out,v.laraiz);
  	return out;
 }
 
