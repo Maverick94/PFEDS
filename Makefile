@@ -1,5 +1,5 @@
 SRC = src
-INC = include 
+INC = include
 OBJ = obj
 BIN = bin
 CXX = g++

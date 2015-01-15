@@ -19,6 +19,6 @@ int main ()
 
 	cout << tree;
 
-	cout << "\nHa compilado" << endl;
+	cout << "\nComemela cabron, no te rias" << endl;
 
 }
