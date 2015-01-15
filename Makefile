@@ -3,9 +3,16 @@ INC = include
 OBJ = obj
 BIN = bin
 CXX = g++
-CPPFLAGS = -Wall -g  -I$(INC) -c
+CPPFLAGS = -w -g  -I$(INC) -c
+#CPPFLAGS = -Wall -g  -I$(INC) -c
 
-all:  
+all: $(BIN)/main
+
+$(BIN)/main : $(OBJ)/main.o
+	$(CXX) -o $(BIN)/main $(OBJ)/main.o -I./$(INC) 
+
+$(OBJ)/main.o :  $(SRC)/main.cpp $(INC)/ArbolGeneral.h
+	$(CXX) $(CPPFLAGS)  -o $(OBJ)/main.o $(SRC)/main.cpp -I./$(INC)
 
 # ************ Generación de documentación ******************
 documentacion:
