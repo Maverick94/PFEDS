@@ -6,7 +6,7 @@ using namespace std;
 
 template <class Tbase>
 
-void ArbolGeneral<Tbase>::destruir(nodo * n)
+void ArbolGeneral<Tbase>::destruir(nodo *n)
 {
 	if(n != 0)
 	{
@@ -27,7 +27,8 @@ void ArbolGeneral<Tbase>::copiar(nodo *& dest, nodo * orig)
 	}
 	else
 	{
-		dest = new nodo (orig->etiqueta);
+		dest = new nodo; //(orig->etiqueta);
+		dest->etiqueta = orig->etiqueta;
 		copiar(orig->izqda, dest->izqda);
 		copiar(orig->drcha, dest->drcha);
 
@@ -244,15 +245,15 @@ void ArbolGeneral<Tbase>::podar_hermanoderecha(Nodo n, ArbolGeneral<Tbase>& dest
 	destruir(dest.laraiz);
 	dest.laraiz = n -> drcha; //hacemos que la nueva raiz sea el hermano de la derecha de n.
 
-	if(dest.raiz->drcha != 0)	//si este tiene otro hermano a la derecha, el hermano de la izquierda apuntara al hermano de la derecha
+	if(dest.laraiz->drcha != 0)	//si este tiene otro hermano a la derecha, el hermano de la izquierda apuntara al hermano de la derecha
 	{
-		n->drcha = dest.raiz->drcha;
-		dest.raiz->drcha = 0;
+		n->drcha = dest.laraiz->drcha;
+		dest.laraiz->drcha = 0;
 	}
 	else	//si no tiene hermano a la derecha, el hermano de la izquierda simplemente dejara de apuntarle.
 		n->drcha = 0;
 
-	dest.raiz->padre = 0;
+	dest.laraiz->padre = 0;
 
 }
 
@@ -267,8 +268,8 @@ void ArbolGeneral<Tbase>::insertar_hijomasizquierda(Nodo n, ArbolGeneral<Tbase>&
 	n->izqda=rama.laraiz;	//Hijo a la izquierda de n pasa a ser la la raiz de la rama que insertamos.
 	rama.laraiz->padre=n;	//Como deja de ser raiz, tiene que refenciar a un nuevo padre. En este caso n.
 
-	//destruir(rama.laraiz);	//Destruimos la rama porque ya está insertada.
-}
+	//destruir(rama.laraiz);
+	}	
 
 template <class Tbase>
 void ArbolGeneral<Tbase>::insertar_hermanoderecha(Nodo n, ArbolGeneral<Tbase>& rama)	//Codificado por Andrés
@@ -281,7 +282,7 @@ void ArbolGeneral<Tbase>::insertar_hermanoderecha(Nodo n, ArbolGeneral<Tbase>& r
 	rama.laraiz->padre = n->padre; //Como deja de ser raiz, tiene que referenciar a un nuevo padre. En este caso n->padre.
 	n->drcha = rama.laraiz;	//la rama pasa a ser hermano a la derecha de n.
 
-	destruir(rama.laraiz);
+	//destruir(rama.laraiz);	//SI descomentas esto , peta (devuelve basura)
 }
 
 template <class Tbase>
@@ -291,9 +292,9 @@ void ArbolGeneral<Tbase>::clear()	//Codificado por Andrés
 }
 
 template <class Tbase>
-int ArbolGeneral<Tbase>::size() const{
+int ArbolGeneral<Tbase>::size() const{//El size está mal
 	
-	int cont=1;
+	/*int cont=1;
 
 	if(laraiz==0)
 		return 0;
@@ -304,11 +305,12 @@ int ArbolGeneral<Tbase>::size() const{
 			aux=auxpadre->izqda;			
 			while(aux!=0){
 				cont++;
-				aux=aux->izda;			
+				aux=aux->izqda;			
 			}
 			auxpadre=auxpadre->izqda->drcha;			
 		}
-		return cont;
+		return cont;*/
+		return contar(laraiz);
 }
 
 template <class Tbase>
