@@ -462,8 +462,8 @@ class ArbolGeneral{
      * */
     class iter_preorden{
        private:
-      	 Nodo it; ///<Puntero al nodo 
-      	 Nodo raiz; ///<Puntero a la raiz del arbol donde esta it
+      	 nodo *it; ///<Puntero al nodo 
+      	 nodo *raiz; ///<Puntero a la raiz del arbol donde esta it
       	 int level; ///< altura del nodo
        public:
 	 
@@ -513,7 +513,7 @@ class ArbolGeneral{
 	 
 	 
 	 friend class ArbolGeneral;
-    };
+};
     class const_iter_preorden{
        private:
 	  const nodo * it;

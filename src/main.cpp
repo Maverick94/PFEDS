@@ -5,11 +5,12 @@
 int main ()
 {
 	ArbolGeneral<char> tree, othertree, hermanoderecha, rama;
+	ArbolGeneral<char>::iter_preorden it;
 
 	cout << "Introduce un Arbol" << endl;
 	cin >> tree;
 
-	cout << "Tu Arbol Introducido deberia ser: " << endl;
+	/*cout << "Tu Arbol Introducido deberia ser: " << endl;
 	cout << tree << endl;
 
 	cout << "Inserta otro para añadirlo al nodo mas izquierda" << endl;
@@ -51,7 +52,13 @@ int main ()
 	cout << "Borramos el arbol: "<<endl;
 	tree.clear();
 	cout << tree << endl;
-	cout << tree.empty();
+	cout << tree.empty();*/
+
+	for (it = tree.begin(); it!= tree.end(); ++it)
+	{
+		cout << *it << " ";
+	}
+	cout << tree.end();
 
 
 	cout << "\nHa compilado" << endl;

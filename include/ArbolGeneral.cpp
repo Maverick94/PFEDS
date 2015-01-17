@@ -329,6 +329,9 @@ template <class Tbase>
 bool ArbolGeneral<Tbase>::operator != (const ArbolGeneral<Tbase>& v) const{
 	return !soniguales(laraiz,v.laraiz);
 }
+/*END PUBLIC*/
+
+/*FUERA DE LA CLASE*/
 
 template<class T> 
 std::istream& operator>>(std::istream& in, ArbolGeneral<T>& v)
@@ -345,6 +348,89 @@ std::ostream& operator<< (std::ostream& out, const ArbolGeneral<T>& v)
 }
 
 
-/*END PUBLIC*/
 
-/*FUERA DE LA CLASE*/
+
+/*ITERADORES*/
+
+template <class Tbase>
+ArbolGeneral<Tbase>::iter_preorden::iter_preorden()
+{
+	it = raiz = 0;//laraiz;
+	level = 0;
+}
+
+template <class Tbase>
+Tbase & ArbolGeneral<Tbase>::iter_preorden::operator*()
+{
+	return it->etiqueta;
+}
+
+template <class Tbase>
+int ArbolGeneral<Tbase>::iter_preorden::getlevel()const
+{
+	return level;
+}
+
+template <class Tbase>
+typename ArbolGeneral<Tbase>::iter_preorden & ArbolGeneral<Tbase>::iter_preorden::operator ++()
+{
+	if(it->izqda!=0)//Recorrido preorder
+	{
+		it=it->izqda;
+		level++;
+	}
+	else if(it->drcha!=0)
+	{
+		it=it->drcha;
+	}
+	else
+	{
+		it=it->padre;
+		level--;
+		it=it->drcha;
+	}
+
+	return *this;
+}
+
+template <class Tbase>
+bool ArbolGeneral<Tbase>::iter_preorden::operator == (const iter_preorden &i)
+{
+	bool iguales = true;
+
+	if(raiz != i.raiz || it != i.it)
+		iguales = false;
+
+	return iguales;
+}
+
+template <class Tbase>
+bool ArbolGeneral<Tbase>::iter_preorden::operator != (const iter_preorden &i)
+{
+	return !(*this==i);
+}
+
+template <class Tbase>
+typename ArbolGeneral<Tbase>::iter_preorden ArbolGeneral<Tbase>::begin()
+{
+	iter_preorden it;
+	it.it = it.raiz = laraiz;
+	return it;
+}
+
+template <class Tbase>
+typename ArbolGeneral<Tbase>::iter_preorden ArbolGeneral<Tbase>::end()
+{
+	iter_preorden it;
+	it.raiz=laraiz;
+
+	it.it=it.raiz;
+    while(it.it->izqda!=0)
+    {
+        it.it=it.it->izqda;
+        while(it.it->drcha!=0)
+            it.it=it.it->drcha;
+    }
+    return it;
+}
+
