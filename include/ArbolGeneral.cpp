@@ -208,7 +208,8 @@ const Tbase& ArbolGeneral<Tbase>::etiqueta(const Nodo n) const{
 }
 
 template <class Tbase>
-void ArbolGeneral<Tbase>::asignar_subarbol(const ArbolGeneral<Tbase>& orig, const Nodo nod){
+void ArbolGeneral<Tbase>::asignar_subarbol(const ArbolGeneral<Tbase>& orig, const Nodo nod)
+{
 	//VACIO
 }
 
@@ -289,6 +290,7 @@ template <class Tbase>
 void ArbolGeneral<Tbase>::clear()	//Codificado por Andrés
 {
 	destruir(laraiz);
+	laraiz=0;
 }
 
 template <class Tbase>

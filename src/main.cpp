@@ -47,7 +47,8 @@ int main ()
 	cout << "La rama que hemos podado la vamos a igualar al arbol viejo: "<<endl;
 	tree = rama;
 
-	cout << tree << endl;
+	//cout << tree << endl;
+	cout << "Borramos el arbol: "<<endl;
 	tree.clear();
 	cout << tree << endl;
 	cout << tree.empty();
