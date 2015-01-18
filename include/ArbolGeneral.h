@@ -95,7 +95,7 @@ class ArbolGeneral{
       * Este miembro es un puntero al primer nodo, que corresponde a la raíz 
       * del árbol. Vale 0 sin el árbol es vacío.
       */
-    struct nodo *laraiz;
+    struct nodo * laraiz;
     
     /**
       * @brief Destruye el subárbol
@@ -457,132 +457,134 @@ class ArbolGeneral{
     
     
     
-    /** 
-     * @brief TDA. Iterador del ArbolGeneral  en preorden
-     * */
-    class iter_preorden{
-       private:
-      	 nodo *it; ///<Puntero al nodo 
-      	 nodo *raiz; ///<Puntero a la raiz del arbol donde esta it
-      	 int level; ///< altura del nodo
-       public:
-	 
-	 /**
-	  * @brief Constructor por defecto
-	  * 
-	  * */
-	 iter_preorden();
-	 
-	 /**
-	  * @brief Obtiene la etiqueta del nodo
-	  * 
-	  * */
-	 
-	 Tbase & operator*();
-	 
-	 
-	 /**
-	  * @brief Obtiene el nivel del nodo
-	  * 
-	  * */
-	 
-	 
-	 int getlevel()const;
-	   
-	 /**
-	  * @brief Obtiene un iterador al siguiente nodo segun el recorrido en preorden
-	  * 
-	  * */
-	 iter_preorden & operator ++();
-	    
-	 /**
-	  * @brief Compara dos iteradores
-	  * @param i: iterador con el  que se compara
-	  * @return true si los dos iteradores son iguales (la raiz y el nodo son iguales). False en caso contrario
-	  * */
-	 bool operator == (const iter_preorden &i);
-	 	    
-	 /**
-	  * @brief Compara dos iteradores
-	  * @param i: iterador con el  que se compara
-	  * @return true si los dos iteradores son diferentes (la raiz o  el nodo son diferentes). False en caso contrario
-	  * */
-	 
-	 
-	 bool operator != (const iter_preorden &i);
-	 
-	 
-	 friend class ArbolGeneral;
-};
-    class const_iter_preorden{
-       private:
-	  const nodo * it;
-	  const nodo * raiz;
-	 int level;
-       public:
-	 /**
-	  * @brief Constructor por defecto
-	  * 
-	  * */
-	 const_iter_preorden();
-	 
-	 /**
-	  * @brief Obtiene la etiqueta del nodo
-	  * 
-	  * */
-	 
-	 const Tbase & operator*();
-	 
-	 
-	 /**
-	  * @brief Obtiene el nivel del nodo
-	  * 
-	  * */
-	 
-	 
-	 int getlevel()const;
-	   
-	 /**
-	  * @brief Obtiene un iterador al siguiente nodo segun el recorrido en preorden
-	  * 
-	  * */
-	 const_iter_preorden & operator ++();
-	    
-	 /**
-	  * @brief Compara dos iteradores
-	  * @param i: iterador con el con que se comparación
-	  * @return true si los dos iteradores son iguales (la raiz y el nodo son iguales). False en caso contrario
-	  * */
-	 bool operator == (const const_iter_preorden &i);
-	 	    
-	 /**
-	  * @brief Compara dos iteradores
-	  * @param i: iterador con el con que se comparación
-	  * @return true si los dos iteradores son diferentes (la raiz o  el nodo son diferentes). False en caso contrario
-	  * */
-	 
-	 
-	 bool operator != (const const_iter_preorden &i);
-	 
-	 
-	 friend class ArbolGeneral;
-    };
-    
-    /**
-     * @brief Inicializa un iterador a la raiz del arbol. Nivel -1
-     */
-    
-     iter_preorden begin();
-     const_iter_preorden begin()const;
-     
-     
-    /**
-     * @brief Inicializa un iterador al nodo nulo con la raiz del arbol. Nivel -1
-     */
-     iter_preorden end();
-     const_iter_preorden end()const; 
-    
-};
+                            /** 
+                             * @brief TDA. Iterador del ArbolGeneral  en preorden
+                             * */
+                            class iter_preorden{
+                               private:
+                              	 nodo *it; ///<Puntero al nodo 
+                              	 nodo *raiz; ///<Puntero a la raiz del arbol donde esta it
+                              	 int level; ///< altura del nozdo
+                               public:
+                        	 
+                        	 /**
+                        	  * @brief Constructor por defecto
+                        	  * 
+                        	  * */
+                        	 iter_preorden();
+                        	 
+                        	 /**
+                        	  * @brief Obtiene la etiqueta del nodo
+                        	  * 
+                        	  * */
+                        	 
+                        	 Tbase & operator*();
+                        	 
+                        	 
+                        	 /**
+                        	  * @brief Obtiene el nivel del nodo
+                        	  * 
+                        	  * */
+                        	 
+                        	 
+                        	 int getlevel()const;
+                        	   
+                        	 /**
+                        	  * @brief Obtiene un iterador al siguiente nodo segun el recorrido en preorden
+                        	  * 
+                        	  * */
+                        	 iter_preorden & operator ++();
+                        	    
+                        	 /**
+                        	  * @brief Compara dos iteradores
+                        	  * @param i: iterador con el  que se compara
+                        	  * @return true si los dos iteradores son iguales (la raiz y el nodo son iguales). False en caso contrario
+                        	  * */
+                        	 bool operator == (const iter_preorden &i);
+                        	 	    
+                        	 /**
+                        	  * @brief Compara dos iteradores
+                        	  * @param i: iterador con el  que se compara
+                        	  * @return true si los dos iteradores son diferentes (la raiz o  el nodo son diferentes). False en caso contrario
+                        	  * */
+                        	 
+                        	 
+                        	 bool operator != (const iter_preorden &i);
+                        	 
+                        	 
+                        	 friend class ArbolGeneral;
+                        };
+
+
+                        class const_iter_preorden{
+                           private:
+                    	  const nodo * it;
+                    	  const nodo * raiz;
+                    	 int level;
+                           public:
+                    	 /**
+                    	  * @brief Constructor por defecto
+                    	  * 
+                    	  * */
+                    	 const_iter_preorden();
+                    	 
+                    	 /**
+                    	  * @brief Obtiene la etiqueta del nodo
+                    	  * 
+                    	  * */
+                    	 
+                    	 const Tbase & operator*();
+                    	 
+                    	 
+                    	 /**
+                    	  * @brief Obtiene el nivel del nodo
+                    	  * 
+                    	  * */
+                    	 
+                    	 
+                    	 int getlevel()const;
+                    	   
+                    	 /**
+                    	  * @brief Obtiene un iterador al siguiente nodo segun el recorrido en preorden
+                    	  * 
+                    	  * */
+                    	 const_iter_preorden & operator ++();
+                    	    
+                    	 /**
+                    	  * @brief Compara dos iteradores
+                    	  * @param i: iterador con el con que se comparación
+                    	  * @return true si los dos iteradores son iguales (la raiz y el nodo son iguales). False en caso contrario
+                    	  * */
+                    	 bool operator == (const const_iter_preorden &i);
+                    	 	    
+                    	 /**
+                    	  * @brief Compara dos iteradores
+                    	  * @param i: iterador con el con que se comparación
+                    	  * @return true si los dos iteradores son diferentes (la raiz o  el nodo son diferentes). False en caso contrario
+                    	  * */
+                    	 
+                    	 
+                    	 bool operator != (const const_iter_preorden &i);
+                    	 
+                    	 
+                    	 friend class ArbolGeneral;
+                        };
+                        
+                        /**
+                         * @brief Inicializa un iterador a la raiz del arbol. Nivel -1
+                         */
+                        
+                         iter_preorden begin();
+                         const_iter_preorden begin()const;
+                         
+                         
+                        /**
+                         * @brief Inicializa un iterador al nodo nulo con la raiz del arbol. Nivel -1
+                         */
+                         iter_preorden end();
+                         const_iter_preorden end()const; 
+                        
+                    };
 
 #include "ArbolGeneral.cpp"
 
