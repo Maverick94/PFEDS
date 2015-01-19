@@ -1,14 +1,30 @@
 #include <iostream>
 #include <ArbolGeneral.h>
 
+void Recorrer (const ArbolGeneral<char> &t)
+{
+	ArbolGeneral<char>::const_iter_preorden itc;
+
+	for(itc = t.begin(); itc != t.end(); ++itc)
+		cout << *itc<< " ";
+
+	cout << *itc << endl;
+}
 
 int main ()
 {
 	ArbolGeneral<char> tree, othertree, hermanoderecha, rama;
 	ArbolGeneral<char>::iter_preorden it;
+	ArbolGeneral<char>::const_iter_preorden itc;
+	const ArbolGeneral<char> treeconst;
 
 	cout << "Introduce un Arbol" << endl;
 	cin >> tree;
+
+	Recorrer(tree);
+	//treeconst=tree;
+
+
 
 	/*cout << "Tu Arbol Introducido deberia ser: " << endl;
 	cout << tree << endl;
@@ -54,12 +70,12 @@ int main ()
 	cout << tree << endl;
 	cout << tree.empty();*/
 
-	for (it = tree.begin(); it!= tree.end(); ++it)
+	/*for (itc = tree.begin(); itc!= tree.end(); ++itc)
 	{
-		cout << *it << " ";
-	}
-	cout << tree.end();
-
+		cout << *itc << " ";
+	}*/
+	//cout << tree.end();
+	//cout << *itc << endl;
 
 	cout << "\nHa compilado" << endl;
 

@@ -294,24 +294,8 @@ void ArbolGeneral<Tbase>::clear()	//Codificado por Andrés
 }
 
 template <class Tbase>
-int ArbolGeneral<Tbase>::size() const{//El size está mal
+int ArbolGeneral<Tbase>::size() const{
 	
-	/*int cont=1;
-
-	if(laraiz==0)
-		return 0;
-	else{
-		nodo *auxpadre=laraiz;
-		nodo *aux;
-		while(auxpadre!=0)		
-			aux=auxpadre->izqda;			
-			while(aux!=0){
-				cont++;
-				aux=aux->izqda;			
-			}
-			auxpadre=auxpadre->izqda->drcha;			
-		}
-		return cont;*/
 		return contar(laraiz);
 }
 
@@ -350,7 +334,7 @@ std::ostream& operator<< (std::ostream& out, const ArbolGeneral<T>& v)
 
 
 
-/*ITERADORES*/
+/*ITERADOR*/
 
 template <class Tbase>
 ArbolGeneral<Tbase>::iter_preorden::iter_preorden()
@@ -434,3 +418,86 @@ typename ArbolGeneral<Tbase>::iter_preorden ArbolGeneral<Tbase>::end()
     return it;
 }
 
+/*ITERADOR CONST*/
+
+template <class Tbase>
+ArbolGeneral<Tbase>::const_iter_preorden::const_iter_preorden()
+{
+	it=raiz=0;
+	level=0;
+}
+
+template <class Tbase>
+const Tbase & ArbolGeneral<Tbase>::const_iter_preorden::operator*()
+{
+	return it->etiqueta;
+}
+
+template <class Tbase>
+int ArbolGeneral<Tbase>::const_iter_preorden::getlevel()const
+{
+	return level;
+}
+
+template <class Tbase>
+typename ArbolGeneral<Tbase>::const_iter_preorden & ArbolGeneral<Tbase>::const_iter_preorden::operator ++()
+{
+	if(it->izqda!=0)//Recorrido preorder
+	{
+		it=it->izqda;
+		level++;
+	}
+	else if(it->drcha!=0)
+	{
+		it=it->drcha;
+	}
+	else
+	{
+		it=it->padre;
+		level--;
+		it=it->drcha;
+	}
+
+	return *this;
+}
+
+template <class Tbase>
+bool ArbolGeneral<Tbase>::const_iter_preorden::operator == (const const_iter_preorden &i)
+{
+	bool iguales = true;
+
+	if(raiz != i.raiz || it != i.it)
+		iguales = false;
+
+	return iguales;
+}
+
+template <class Tbase>
+bool ArbolGeneral<Tbase>::const_iter_preorden::operator != (const const_iter_preorden &i)
+{
+	return !(*this==i);
+}
+
+template <class Tbase>
+typename ArbolGeneral<Tbase>::const_iter_preorden ArbolGeneral<Tbase>::begin()const
+{
+	const_iter_preorden it;
+	it.it = it.raiz = laraiz;
+	return it;
+}
+
+template <class Tbase>
+typename ArbolGeneral<Tbase>::const_iter_preorden ArbolGeneral<Tbase>::end()const
+{
+	const_iter_preorden it;
+	it.raiz=laraiz;
+
+	it.it=it.raiz;
+    while(it.it->izqda!=0)
+    {
+        it.it=it.it->izqda;
+        while(it.it->drcha!=0)
+            it.it=it.it->drcha;
+    }
+    return it;
+}
