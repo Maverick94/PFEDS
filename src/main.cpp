@@ -13,26 +13,51 @@ void Recorrer (const ArbolGeneral<char> &t)
 
 int main ()
 {
-	ArbolGeneral<char> tree, othertree, hermanoderecha, rama;
-	ArbolGeneral<char>::iter_preorden it;
-	ArbolGeneral<char>::const_iter_preorden itc;
-	const ArbolGeneral<char> treeconst;
+
+	ArbolGeneral<char> tree1,tree2;
+	ArbolGeneral<char>::iter_preorden itree;
+
 
 	cout << "Introduce un Arbol" << endl;
-	cin >> tree;
+	cin >> tree1;
 
-	Recorrer(tree);
+	cout << "Introduce otro arbol"<<endl;
+	cin >> tree2;
+
+	
+	cout << "Arbol 1"<<endl;
+	cout <<tree1<< endl;
+
+	cout << "Arbol 2"<<endl;
+	cout <<tree2<< endl;
+
+	tree1.asignar_subarbol(tree2,tree2.hijomasizquierda(tree2.raiz()));
+
+	cout<<"Arbol 1 tiene "<<tree1.size()<<" nodos"<<endl;
+
+	cout<<"Ahora ARBOL 1 vale: "<<endl;
+	cout << tree1 << endl;
+
+	/*for (itree = tree1.begin(); itree!=tree1.end(); ++itree){
+		cout << (*itree) << " ";
+	}
+	cout<<(*itree)<<endl;*/
+
+	/*cout << tree1;*/
+
+	Recorrer(tree1);
+	Recorrer(tree2);
 	//treeconst=tree;
 
 
 
 	/*cout << "Tu Arbol Introducido deberia ser: " << endl;
-	cout << tree << endl;
+	cout << tree << endl;*/
 
-	cout << "Inserta otro para añadirlo al nodo mas izquierda" << endl;
-	cin >> othertree;
+	/*cout << "Inserta otro" << endl;
+	cin >> tree2;
 
-	cout << "Inserta otro para hacerlo hermano a la derecha" << endl;
+	/*cout << "Inserta otro para hacerlo hermano a la derecha" << endl;
 	cin >> hermanoderecha;
 
 	tree.insertar_hijomasizquierda(tree.raiz(), othertree);
@@ -70,13 +95,30 @@ int main ()
 	cout << tree << endl;
 	cout << tree.empty();*/
 
-	/*for (itc = tree.begin(); itc!= tree.end(); ++itc)
-	{
-		cout << *itc << " ";
-	}*/
-	//cout << tree.end();
-	//cout << *itc << endl;
+	/*cout<<"ARBOL 1: "<<endl;
+	for (itree = tree1.begin(); itree!=tree1.end(); ++itree){
+		cout << (*itree) << " ";
+	}
+	cout<<(*itree)<<endl;
 
-	cout << "\nHa compilado" << endl;
+	cout<<"ARBOL 2: "<<endl;
+	for (itree = tree2.begin(); itree!= tree2.end(); ++itree){
+		cout << (*itree) << " ";
+	}
+	cout<<(*itree)<<endl;
+
+	cout<<"--------------------------------------------"<<endl;*/
+
+
+	/*tree1.asignar_subarbol(tree2,tree2.hermanoderecha(tree2.hijomasizquierda(tree2.raiz())));
+
+	cout<<"Arbol 1 tiene "<<tree1.size()<<" nodos"<<endl;
+
+	cout<<"Ahora ARBOL 1 vale: "<<endl;
+	
+	for (itree = tree1.begin(); itree!=tree1.end(); ++itree){
+		cout << (*itree) << " ";
+	}
+	cout<<(*itree)<<endl;*/
 
 }
