@@ -21,6 +21,7 @@ class Diccionario{
 
 	private:
 		ArbolGeneral<info> datos;
+		bool mi_esta(info*nodo,string palabra);
 
 	public:
 
