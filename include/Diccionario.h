@@ -3,6 +3,7 @@
 
 #include “ArbolGeneral.h”
 #include <vector>
+#include <string>
 
 struct info{
 	char c; ///<< caracter que se almacena en un nodo
@@ -21,6 +22,8 @@ class Diccionario{
 
 	private:
 		ArbolGeneral<info> datos;
+
+		void Construir (nodo* nod, int longitud, string s);
 
 	public:
 
