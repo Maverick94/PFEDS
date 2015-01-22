@@ -22,6 +22,7 @@ class Diccionario{
 
 	private:
 		ArbolGeneral<info> datos;
+		bool mi_esta(info*nodo,string palabra);
 
 		void Construir (nodo* nod, int longitud, string s);
 
