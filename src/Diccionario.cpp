@@ -1,4 +1,6 @@
 #include <iostream>
+#include "Diccionario.h"
+
 
 using namespaces std;
 
@@ -16,12 +18,5 @@ int Diccionario::size()const{
 }
 
 bool Diccionario::Esta(string palabra){
-	ArbolGeneral<info>::const_iter_preorden it=datos.begin(); ++it;
-	int index=0; bool encontrado=false;
-	for(it;it!=datos.end() && encontrado==false;++it){
-		if( (*it).c==palabra[index] ){
-			encontrado=true;
-			index++;
-		}
-	}
+	return mi_esta(datos.raiz(),palabra);
 }

@@ -6,13 +6,19 @@ CXX = g++
 CPPFLAGS = -w -g  -I$(INC) -c
 #CPPFLAGS = -Wall -g  -I$(INC) -c
 
-all: $(BIN)/main
+all: $(BIN)/testdiccionario
 
-$(BIN)/main : $(OBJ)/main.o
-	$(CXX) -o $(BIN)/main $(OBJ)/main.o -I./$(INC) 
+$(BIN)/testdiccionario: $(SRC)/testdiccionario.cpp $(INC)/ArbolGeneral.h $(INC)/ArbolGeneral.cpp $(INC)/Diccionario.h $(SRC)/Diccionario.cpp
+	$(CXX) $(SRC)/testdiccionario.cpp -I./$(INC) -g -o $(BIN)/testdiccionario.cpp 
 
-$(OBJ)/main.o :  $(SRC)/main.cpp $(INC)/ArbolGeneral.h
-	$(CXX) $(CPPFLAGS)  -o $(OBJ)/main.o $(SRC)/main.cpp -I./$(INC)
+#$(BIN)/testdiccionario : $(OBJ)/testdiccionario.o $(OBJ)/diccionario.o
+#	$(CXX) -o $(BIN)/testdiccionario $(OBJ)/testdiccionario.o -I./$(INC)
+
+#$(OBJ)/testdiccionario.o :  $(SRC)/testdiccionario.cpp $(INC)/diccionario.h
+#	$(CXX) $(CPPFLAGS)  -o $(OBJ)/testdiccionario.o $(SRC)/testdiccionario.cpp -I./$(INC)
+
+#$(OBJ)/diccionario.o : $(SRC)/diccionario.cpp $(INC)/diccionario.h $(INC)/ArbolGeneral.h
+#	$(CXX) $(CPPFLAGS)  -o $(OBJ)/diccionario.o $(SRC)/diccionario.cpp -I./$(INC)
 
 # ************ Generación de documentación ******************
 documentacion:

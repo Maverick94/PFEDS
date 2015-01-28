@@ -408,16 +408,14 @@ bool ArbolGeneral<Tbase>::const_iter_preorden::operator != (const const_iter_pre
 }
 
 template <class Tbase>
-typename ArbolGeneral<Tbase>::const_iter_preorden ArbolGeneral<Tbase>::begin()const
-{
+typename ArbolGeneral<Tbase>::const_iter_preorden ArbolGeneral<Tbase>::begin()const{
 	const_iter_preorden it;
 	it.it = it.raiz = laraiz;
 	return it;
 }
 
 template <class Tbase>
-typename ArbolGeneral<Tbase>::const_iter_preorden ArbolGeneral<Tbase>::end()const
-{
+typename ArbolGeneral<Tbase>::const_iter_preorden ArbolGeneral<Tbase>::end()const{
 	const_iter_preorden it;
 	it.raiz=laraiz;
 	it.it=it.raiz;

@@ -1,7 +1,7 @@
 #ifndef __Diccionario_h__
 #define __Diccionario_h__
 
-#include “ArbolGeneral.h”
+#include "ArbolGeneral.h"
 #include <vector>
 
 struct info{
@@ -21,14 +21,29 @@ class Diccionario{
 
 	private:
 		ArbolGeneral<info> datos;
-		bool mi_esta(info*nodo,string palabra);
+		
+		bool mi_esta(ArbolGeneral<info>::nodo* n,string palabra){
+			ArbolGeneral<info>::iter_preorden it;
+			it.it=n;
+			it.raiz=datos.raiz();
+			int index=0; bool encontrado=false;
+			for(it;it!=datos.end() && encontrado==false;++it){
+				if( (*it).c==palabra[index] ){
+					encontrado=true;
+					index++;
+					string newstr=palabra.substr(index,palabra.size()-1);
+					mi_esta( it.it->izqda, newstr);
+				}
+			}
+			return encontrado;
+		}
 
 	public:
 
 		/**
 		@brief Construye un diccionario vacío.
 		**/
-		Diccionario()
+		Diccionario();
 
 		/**
 		@brief Devuelve el numero de palabras en el diccionario

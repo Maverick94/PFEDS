@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "diccionario.h"
+#include "Diccionario.h"
 
   
 int main(int argc, char * argv[]){
@@ -12,8 +12,8 @@ int main(int argc, char * argv[]){
 	
 	return 0;
   }
-  
-  ifstream f(argv[1]);
+  cout<<"hola";
+  /*ifstream f(argv[1]);
   info ii(' ', false);
   cout<<"Cargando diccionario...."<<endl;
   Diccionario D;
@@ -38,7 +38,7 @@ int main(int argc, char * argv[]){
     cout<<"Sí esa palabra existe";
  }
  else
-    cout<<"Esa palabra no existe";
+    cout<<"Esa palabra no existe";*/
  
 }
   
