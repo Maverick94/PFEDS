@@ -39,7 +39,7 @@ class Diccionario{
 			return encontrado;
 		}
 
-		void Construir (nodo* nod, int longitud, string s);
+		void Construir (ArbolGeneral<info>::nodo* nod, int longitud, string s);
 
 	public:
 
