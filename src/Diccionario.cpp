@@ -17,6 +17,19 @@ int Diccionario::size()const{
 	return cont;
 }
 
+vector<string> Diccionario::PalabrasLongitud(int longitud)
+{
+	vector<string> palabras;
+	ArbolGeneral<info>::iter_preorden it;
+	int contador=0;
+	string palabra;
+
+	it = datos.begin();
+	
+	while((*it)->final != true && )
+
+
+
 bool Diccionario::Esta(string palabra){
 	return mi_esta(datos.raiz(),palabra);
 }
