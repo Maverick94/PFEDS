@@ -26,8 +26,8 @@ vector<string> Diccionario::PalabrasLongitud(int longitud)
 
 	it = datos.begin();
 	
-	while((*it)->final != true && )
-
+	while((*it)->final != true && true){}
+}
 
 
 bool Diccionario::Esta(string palabra){
