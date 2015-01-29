@@ -75,7 +75,7 @@ istream & operator>>(istream & is,Diccionario &D){
 ostream & operator<<(ostream & os, const Diccionario &D)
 {
 	string pal;
-	ArbolGeneral<info> *n = &(D.datos);
+	//ArbolGeneral<info> *n = &(D.datos);
 
 	while(!D.datos.etiqueta.final)
 	{
@@ -83,11 +83,29 @@ ostream & operator<<(ostream & os, const Diccionario &D)
 	}
 }
 
-Diccionario::iterator::iterator(){}
-string Diccionario::iterator::operator*(){}
-Diccionario::iterator & Diccionario::iterator::operator++(){}
-bool Diccionario::iterator::operator==(const iterator &i){}
-bool Diccionario::iterator::operator!=(const iterator &i){}
+Diccionario::iterator::iterator(){/*No hace nada, ya se construye con el constructor por defecto*/}
+
+string Diccionario::iterator::operator*(){
+	return pal;
+}
+
+Diccionario::iterator & Diccionario::iterator::operator++(){
+	
+	while((*it).final == false && it!=datos.end()){
+		pal.push_back((*it).c);
+		++it;
+	}
+	++it;
+
+	return *this;
+}
+
+bool Diccionario::iterator::operator==(const iterator &i){
+	return it == i.it;
+}
+bool Diccionario::iterator::operator!=(const iterator &i){
+	return it != i.it;
+}
 
 Diccionario::iterator Diccionario::begin(){}
 Diccionario::iterator Diccionario::end(){}
