@@ -26,7 +26,7 @@ vector<string> Diccionario::PalabrasLongitud(int longitud)
 
 	it = datos.begin();
 	
-	while((*it)->final != true && true){}
+	while((*it).final != true && true){}
 }
 
 
@@ -35,7 +35,8 @@ bool Diccionario::Esta(string palabra){
 }
 
 istream & operator>>(istream & is,Diccionario &D){
-	ArbolGeneral<info>::nodo * pos=D.datos.raiz();
+	Diccionario::iterator * pos=&(D.datos.raiz());
+	/*ArbolGeneral<info>::nodo * pos=D.datos.raiz();
 	ArbolGeneral<info>::nodo n;
 	while(is){
 		//Obtengo la palabra
@@ -48,11 +49,19 @@ istream & operator>>(istream & is,Diccionario &D){
 			}
 			if(pos->izqda!=0){
 				pos=pos->izqda;
-				while(pos->drcha!=0){
+				if(pos->etiqueta.c==c){
+					if(pos->hizq!=0){
+						pos=pos->izqda;
+					}else{
+						D.datos.insertar_hijomasizquierda(pos,ArbolGeneral<info>(n));
+					}
+				}else{
+					while(pos->drcha!=0){
+						pos=pos->drcha;
+					}
+					D.datos.insertar_hermanoderecha(pos,ArbolGeneral<info>(n));
 					pos=pos->drcha;
 				}
-				D.datos.insertar_hermanoderecha(pos,ArbolGeneral<info>(n));
-				pos=pos->drcha;
 			}else{
 				D.datos.insertar_hijomasizquierda(pos,ArbolGeneral<info>(n));
 				pos=pos->izqda;
@@ -60,6 +69,7 @@ istream & operator>>(istream & is,Diccionario &D){
 		}
 		pos=D.datos.raiz();
 	}
+	return is;*/
 }
 
 ostream & operator<<(ostream & os, const Diccionario &D)
@@ -73,11 +83,11 @@ ostream & operator<<(ostream & os, const Diccionario &D)
 	}
 }
 
-Diccionario::iterator(){}
+Diccionario::iterator::iterator(){}
 string Diccionario::iterator::operator*(){}
-iterator & Diccionario::iterator::operator++(){}
+Diccionario::iterator & Diccionario::iterator::operator++(){}
 bool Diccionario::iterator::operator==(const iterator &i){}
 bool Diccionario::iterator::operator!=(const iterator &i){}
 
-iterator Diccionario::begin();
-iterator Diccionario::end();
+Diccionario::iterator Diccionario::begin(){}
+Diccionario::iterator Diccionario::end(){}
