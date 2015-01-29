@@ -2,7 +2,7 @@
 #include "Diccionario.h"
 
 
-using namespaces std;
+using namespace std;
 
 
 Diccionario::Diccionario(){/*No hace nada*/}
@@ -62,8 +62,15 @@ istream & operator>>(istream & is,Diccionario &D){
 	}
 }
 
-ostream & operator<<(ostream & os, const Diccionario &D){
+ostream & operator<<(ostream & os, const Diccionario &D)
+{
+	string pal;
+	ArbolGeneral<info> *n = &(D.datos);
 
+	while(!D.datos.etiqueta.final)
+	{
+		n=n
+	}
 }
 
 Diccionario::iterator(){}
