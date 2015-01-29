@@ -33,3 +33,44 @@ vector<string> Diccionario::PalabrasLongitud(int longitud)
 bool Diccionario::Esta(string palabra){
 	return mi_esta(datos.raiz(),palabra);
 }
+
+istream & operator>>(istream & is,Diccionario &D){
+	ArbolGeneral<info>::nodo * pos=D.datos.raiz();
+	ArbolGeneral<info>::nodo n;
+	while(is){
+		//Obtengo la palabra
+		string pal=getLine(is);
+		for(int i=0;i<pal.size();i++){
+			char c=pal.at(i);
+			n.etiqueta.c=c;
+			if(i==pal.size()-1){
+				n.etiqueta.final=true;
+			}
+			if(pos->izqda!=0){
+				pos=pos->izqda;
+				while(pos->drcha!=0){
+					pos=pos->drcha;
+				}
+				D.datos.insertar_hermanoderecha(pos,ArbolGeneral<info>(n));
+				pos=pos->drcha;
+			}else{
+				D.datos.insertar_hijomasizquierda(pos,ArbolGeneral<info>(n));
+				pos=pos->izqda;
+			}
+		}
+		pos=D.datos.raiz();
+	}
+}
+
+ostream & operator<<(ostream & os, const Diccionario &D){
+
+}
+
+Diccionario::iterator(){}
+string Diccionario::iterator::operator*(){}
+iterator & Diccionario::iterator::operator++(){}
+bool Diccionario::iterator::operator==(const iterator &i){}
+bool Diccionario::iterator::operator!=(const iterator &i){}
+
+iterator Diccionario::begin();
+iterator Diccionario::end();
