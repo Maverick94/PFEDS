@@ -1,6 +1,5 @@
 #include <iostream>
-//#include "Diccionario.h"
-
+#include <algorithm>
 
 using namespace std;
 
@@ -206,6 +205,36 @@ ostream & operator<<(ostream & os, Diccionario &D){
 	    }
   	}
   	return os;
+}
+
+void Diccionario::palabrasConEstasLetras(ArbolGeneral<info>::nodo* desde, vector<Letra> letras, vector<string>& palabras){
+	if(!desde)
+		return;
+	for(int i=0;i<letras.size();i++){
+		char letra=letras.at(i).getLetra();
+		ArbolGeneral<info>::nodo* hijo;
+		info l(letra,false);
+		if(datos.hijoConEtiqueta(desde,l,hijo)){
+			if(hijo->etiqueta.final){
+				string plb=formarPalabraDesde(hijo);
+				if( find(palabras.begin(),palabras.end(),plb)==palabras.end() ){
+					palabras.push_back(formarPalabraDesde(hijo));
+				}
+			}
+			vector<Letra> subletras(letras);
+			subletras.erase(subletras.begin()+i);
+			palabrasConEstasLetras(hijo,subletras,palabras);
+		}
+	}
+}
+
+string Diccionario::formarPalabraDesde(ArbolGeneral<info>::nodo* desde){
+	string palabra ="";
+	while(desde->padre){
+		palabra=desde->etiqueta.c+palabra;
+		desde=desde->padre;
+	}
+	return palabra;
 }
 
 Diccionario::iterator::iterator(){/*No hace nada, ya se construye con el constructor por defecto*/}

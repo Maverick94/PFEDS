@@ -4,6 +4,7 @@
 #include "ArbolGeneral.h"
 #include <vector>
 #include <string>
+#include "letra.h"
 
 struct info{
 	char c; ///<< caracter que se almacena en un nodo
@@ -91,6 +92,10 @@ class Diccionario{
 		@return el flujo de salida
 		**/
 		friend ostream & operator<<(ostream & os, Diccionario &D);
+
+		void palabrasConEstasLetras(ArbolGeneral<info>::nodo* desde, vector<Letra> letras, vector<string>& palabras);
+
+		string formarPalabraDesde(ArbolGeneral<info>::nodo* desde);
 
 		class iterator{
 			
