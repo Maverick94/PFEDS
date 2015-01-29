@@ -15,15 +15,17 @@ struct info{
 	}
 	
 	info(char car, bool f):c(car),final(f){}
+	info& operator=(info& otro);
 };
 
+bool operator==(info& a, info& b);
 
 class Diccionario{
 
 	private:
 		ArbolGeneral<info> datos;
 		
-		bool mi_esta(ArbolGeneral<info>::nodo* n,string palabra){
+		/*bool mi_esta(ArbolGeneral<info>::nodo* n,string palabra){
 			ArbolGeneral<info>::iter_preorden it;
 			it.it=n;
 			it.raiz=datos.raiz();
@@ -37,9 +39,9 @@ class Diccionario{
 				}
 			}
 			return encontrado;
-		}
+		}*/
 
-		void Construir (ArbolGeneral<info>::nodo* nod, int longitud, string s);
+		//void Construir (ArbolGeneral<info>::nodo* nod, int longitud, string s);
 
 	public:
 
@@ -82,7 +84,7 @@ class Diccionario{
 		@param D: el objeto diccionario que se escribe
 		@return el flujo de salida
 		**/
-		friend ostream & operator<<(ostream & os, const Diccionario &D);
+		friend ostream & operator<<(ostream & os, Diccionario &D);
 
 		class iterator{
 			
@@ -102,4 +104,5 @@ class Diccionario{
 		iterator begin();
 		iterator end();
 };
+#include "Diccionario.cpp"
 #endif

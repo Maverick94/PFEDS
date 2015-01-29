@@ -6,14 +6,13 @@
 
   
 int main(int argc, char * argv[]){
-  if (argc!=2){
+  /*if (argc!=2){
 	cout<<"Los parametros son:"<<endl;
 	cout<<"1.- El fichero con las palabras";
 	
 	return 0;
-  }
-  cout<<"hola";
-  /*ifstream f(argv[1]);
+  }*/
+  ifstream f("datos/spanish");
   info ii(' ', false);
   cout<<"Cargando diccionario...."<<endl;
   Diccionario D;
@@ -21,7 +20,7 @@ int main(int argc, char * argv[]){
   cout<<"Leido el diccionario..."<<endl;
   cout<<D;
   
-  int longitud;
+  /*int longitud;
  
   cout<<"Dime la longitud de las palabras que quieres ver";
   cin>>longitud;
