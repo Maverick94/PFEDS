@@ -1,0 +1,47 @@
+#ifndef __Letra_h__
+#define __Letra_h__
+
+
+class letra
+{
+	private:
+		char letra;
+		int n_veces;
+		int puntuacion;
+
+	public:
+
+		letra()
+		{
+			letra = '\0';
+			n_veces = 0;
+			puntuacion = 0;
+		}
+		char getLetra() const
+		{
+			return letra;
+		}	
+
+		void setLetra(char letra)
+		{
+			this->letra=letra;
+		}
+
+		int n_veces()
+		{
+			return n_veces;
+		}
+
+		void incrementa_n_veces()
+		{
+			n_veces++;
+		}
+
+		int getPuntuacion()
+		{
+			return puntuacion;
+		}
+
+};
+
+#endif
