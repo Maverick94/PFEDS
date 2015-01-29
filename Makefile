@@ -6,10 +6,15 @@ CXX = g++
 CPPFLAGS = -w -g  -I$(INC) -c
 #CPPFLAGS = -Wall -g  -I$(INC) -c
 
-all: $(BIN)/testdiccionario
+#all: $(BIN)/testdiccionario
 
-$(BIN)/testdiccionario: $(SRC)/testdiccionario.cpp $(INC)/ArbolGeneral.h $(INC)/ArbolGeneral.cpp $(INC)/Diccionario.h $(INC)/Diccionario.cpp
-	$(CXX) $(SRC)/testdiccionario.cpp -I$(INC) -g -o $(BIN)/testdiccionario
+all: $(BIN)/letras
+
+#$(BIN)/testdiccionario: $(SRC)/testdiccionario.cpp $(INC)/ArbolGeneral.h $(INC)/ArbolGeneral.cpp $(INC)/Diccionario.h $(INC)/Diccionario.cpp
+#	$(CXX) $(SRC)/testdiccionario.cpp -I$(INC) -g -o $(BIN)/testdiccionario
+
+$(BIN)/letras: $(SRC)/letras.cpp $(INC)/ArbolGeneral.h $(INC)/ArbolGeneral.cpp $(INC)/Diccionario.h $(INC)/Diccionario.cpp $(INC)/bolsa_letras.h	
+	$(CXX) $(SRC)/letras.cpp -I$(INC) -g -o $(BIN)/letras
 
 #$(BIN)/testdiccionario: $(SRC)/testdiccionario.cpp $(INC)/ArbolGeneral.h $(INC)/ArbolGeneral.cpp $(INC)/Diccionario.h $(SRC)/Diccionario.cpp
 #	$(CXX) $(SRC)/testdiccionario.cpp -I./$(INC) -g -o $(BIN)/testdiccionario.cpp 

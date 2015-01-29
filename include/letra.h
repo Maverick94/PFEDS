@@ -2,7 +2,7 @@
 #define __Letra_h__
 
 
-class letra
+class Letra
 {
 	private:
 		char letra;
@@ -11,7 +11,7 @@ class letra
 
 	public:
 
-		letra()
+		Letra()
 		{
 			letra = '\0';
 			n_veces = 0;
@@ -27,7 +27,7 @@ class letra
 			this->letra=letra;
 		}
 
-		int n_veces()
+		int getN_veces()
 		{
 			return n_veces;
 		}
@@ -40,6 +40,10 @@ class letra
 		int getPuntuacion()
 		{
 			return puntuacion;
+		}
+
+		bool operator<(Letra& b){
+			return (letra<b.letra);
 		}
 
 };

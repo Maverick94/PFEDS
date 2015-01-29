@@ -55,6 +55,12 @@ class Diccionario{
 		**/
 		int size() const ;
 
+
+
+		ArbolGeneral<info>& getArbol(){
+			return datos;
+		}
+
 		/**
 		@brief Obtiene todas las palabras en el diccionario de un longitud dada
 		@param longitud: la longitud de las palabras de salida

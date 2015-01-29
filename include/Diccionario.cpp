@@ -17,8 +17,8 @@ int Diccionario::size()const{
 	int numero= 0;
 	for (it=datos.begin(); it!=datos.end(); ++it)
     	if ((*it).final)
-      		numero++;
-  return numero;
+    		numero++;
+  	return numero;
 	/*int cont=0;
 	ArbolGeneral<info>::const_iter_preorden it;
 	for(it=datos.begin();it!=datos.end();++it){
@@ -73,11 +73,11 @@ bool operator>(info& a, info& b) {
   return false;
 }
 
-bool operator<(info& a, info& b) {
+/*bool operator<(info& a, info& b) {
   if (a.c<b.c)// && a.final==b.final) No es necesario que coincidan en que sean finales.
     return true;
   return false;
-}
+}*/
 
 
 bool Diccionario::Esta(string palabra){
