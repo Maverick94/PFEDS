@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include "letra.h"
+#include "bolsa_letras.h"
 
 struct info{
 	char c; ///<< caracter que se almacena en un nodo
@@ -96,6 +97,8 @@ class Diccionario{
 		void palabrasConEstasLetras(ArbolGeneral<info>::nodo* desde, vector<Letra> letras, vector<string>& palabras);
 
 		string formarPalabraDesde(ArbolGeneral<info>::nodo* desde);
+
+		int calcularPuntuacion(string palabra,Bolsa_Letras& bl);
 
 		class iterator{
 			

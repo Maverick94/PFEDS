@@ -13,7 +13,7 @@ all: $(BIN)/letras
 #$(BIN)/testdiccionario: $(SRC)/testdiccionario.cpp $(INC)/ArbolGeneral.h $(INC)/ArbolGeneral.cpp $(INC)/Diccionario.h $(INC)/Diccionario.cpp
 #	$(CXX) $(SRC)/testdiccionario.cpp -I$(INC) -g -o $(BIN)/testdiccionario
 
-$(BIN)/letras: $(SRC)/letras.cpp $(INC)/ArbolGeneral.h $(INC)/ArbolGeneral.cpp $(INC)/Diccionario.h $(INC)/Diccionario.cpp $(INC)/bolsa_letras.h	
+$(BIN)/letras: $(SRC)/letras.cpp $(INC)/ArbolGeneral.h $(INC)/ArbolGeneral.cpp $(INC)/Diccionario.h $(INC)/Diccionario.cpp $(INC)/bolsa_letras.h $(INC)/Conjunto_letras.h	
 	$(CXX) $(SRC)/letras.cpp -I$(INC) -g -o $(BIN)/letras
 
 #$(BIN)/testdiccionario: $(SRC)/testdiccionario.cpp $(INC)/ArbolGeneral.h $(INC)/ArbolGeneral.cpp $(INC)/Diccionario.h $(SRC)/Diccionario.cpp

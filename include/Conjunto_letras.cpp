@@ -1,4 +1,3 @@
-#include "Conjunto_letras.h"
 #include <iostream>
 
 using namespace std;
@@ -17,7 +16,17 @@ set <letra> & getConjuto(){
 	return conjletras;
 }
 
-void MostrarConjuto(){
+ostream& operator<<(ostream& os, Conjunto_letras& cl){
+	set<letra>::iterator it;
+
+	for(it = conjletras.begin(); it != conjletras.end(); ++it)
+	{
+		cout << (*it).getLetra() << ", ";
+	}	
+
+	cout << endl;
+}
+/*void MostrarConjuto(){
 	set<letra>::iterator it;
 
 	for(it = conjletras.begin(); it != conjletras.end(); ++it)
@@ -26,6 +35,6 @@ void MostrarConjuto(){
 	}	
 
 	cout << endl;
-}
+}*/
 
 

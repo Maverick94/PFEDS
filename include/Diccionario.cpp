@@ -211,20 +211,22 @@ void Diccionario::palabrasConEstasLetras(ArbolGeneral<info>::nodo* desde, vector
 	if(!desde)
 		return;
 	for(int i=0;i<letras.size();i++){
-		char letra=letras.at(i).getLetra();
-		ArbolGeneral<info>::nodo* hijo;
-		info l(letra,false);
-		if(datos.hijoConEtiqueta(desde,l,hijo)){
-			if(hijo->etiqueta.final){
-				string plb=formarPalabraDesde(hijo);
-				if( find(palabras.begin(),palabras.end(),plb)==palabras.end() ){
-					palabras.push_back(formarPalabraDesde(hijo));
+		//for(int j=0;j<letras.at(i).getNVeces();j++){
+			char letra=letras.at(i).getLetra();
+			ArbolGeneral<info>::nodo* hijo;
+			info l(letra,false);
+			if(datos.hijoConEtiqueta(desde,l,hijo)){
+				if(hijo->etiqueta.final){
+					string plb=formarPalabraDesde(hijo);
+					if( find(palabras.begin(),palabras.end(),plb)==palabras.end() ){
+						palabras.push_back(formarPalabraDesde(hijo));
+					}
 				}
+				vector<Letra> subletras(letras);
+				subletras.erase(subletras.begin()+i);
+				palabrasConEstasLetras(hijo,subletras,palabras);
 			}
-			vector<Letra> subletras(letras);
-			subletras.erase(subletras.begin()+i);
-			palabrasConEstasLetras(hijo,subletras,palabras);
-		}
+		//}
 	}
 }
 
@@ -235,6 +237,14 @@ string Diccionario::formarPalabraDesde(ArbolGeneral<info>::nodo* desde){
 		desde=desde->padre;
 	}
 	return palabra;
+}
+
+int Diccionario::calcularPuntuacion(string palabra,Bolsa_Letras& bl){
+	int puntuacion=0;
+	for(int i=0;i<palabra.size();i++){
+		puntuacion=puntuacion+bl.getPuntuacion(palabra.at(i));
+	}
+	return puntuacion;
 }
 
 Diccionario::iterator::iterator(){/*No hace nada, ya se construye con el constructor por defecto*/}

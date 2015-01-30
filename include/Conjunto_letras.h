@@ -46,7 +46,8 @@ class Conjuto_letras
 	
 		**/
 
-		void MostrarConjuto();
+		//void MostrarConjuto();
+		friend ostream& operator<<(ostream& os, Conjunto_letras& cl);
 
 
 
